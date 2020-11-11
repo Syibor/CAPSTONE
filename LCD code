@@ -1,0 +1,26 @@
+#include<LiquidCrystal.h>
+int n=1;
+LiquidCrystal lcd(7,6,5,4,3,2);
+void setup() {
+  // put your setup code here, to run once:
+  lcd.begin(16,2);
+Serial.begin(9600);
+Serial.print("Enter your message\n");
+lcd.setCursor(0,0);
+}
+
+void loop() 
+{
+if(n%16==0)
+lcd.setCursor(0,1);
+
+ 
+ if(Serial.available())
+ { char ch=Serial.read();
+  Serial.print(ch);
+  
+   lcd.print(ch);
+   n=n+1;
+ }
+
+}          
